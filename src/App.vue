@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import header from './components/header/header.vue';
+  import header from 'components/header/header.vue';
   export default {
     name: 'app',
     components: {

@@ -3,7 +3,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App';
-import goods from './components/goods/goods.vue';
+import goods from 'components/goods/goods';
+import ratings from 'components/ratings/ratings.vue';
+import seller from 'components/seller/seller';
 
 Vue.use(VueRouter); // 安装路由模块
 
@@ -27,13 +29,14 @@ Vue.use(VueRouter); // 安装路由模块
 // router.start(app, '#app');
 
 // const Goods = { template: '<div>goods</div>' };
-const Ratings = { template: '<div>ratings</div>' };
-const Seller = { template: '<div>seller</div>' };
+// const Ratings = { template: '<div>ratings</div>' };
+// const Seller = { template: '<div>seller</div>' };
 
 const routes = [
+  { path: '/', redirect: '/goods' }, // 默认项目启动跳转到goods页面
   { path: '/goods', component: goods },
-  { path: '/ratings', component: Ratings },
-  { path: '/seller', component: Seller }
+  { path: '/ratings', component: ratings },
+  { path: '/seller', component: seller }
 ];
 
 const router = new VueRouter({
