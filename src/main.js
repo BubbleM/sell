@@ -7,6 +7,8 @@ import goods from 'components/goods/goods';
 import ratings from 'components/ratings/ratings.vue';
 import seller from 'components/seller/seller';
 
+import 'common/stylus/index.styl';
+
 Vue.use(VueRouter); // 安装路由模块
 
 // /* eslint-disable no-new */
@@ -40,7 +42,8 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  routes
+  routes,
+  linkActiveClass: 'active'
 });
 
 /* eslint-disable no-new */
