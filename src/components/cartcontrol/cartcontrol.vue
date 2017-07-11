@@ -9,7 +9,7 @@
       </div>
     </transition>
     <div class="cart-count" v-show="food.count>0">{{food.count}}</div>
-    <div class="cart-add icon-add_circle" @click="addCart"></div>
+    <div class="cart-add icon-add_circle" @click.stop.prevent="addCart"></div>
   </div>
 </template>
 
@@ -37,6 +37,7 @@
         } else {
           this.food.count++;
         }
+        this.$emit('add', event.target); // 传递事件到小球获取起始位置
       },
       decreaseCart(event) {
         if (!event._constructed) {
@@ -57,7 +58,7 @@
       display: inline-block
       padding: 6px // 增加点击区域
       opacity: 1
-      transform: translate3D(0, 0, 0) // 硬件加速,让动画更流畅
+      transform: translate3d(0, 0, 0) // 硬件加速,让动画更流畅
       transition: all 0.4s linear
       .inner
         display: inline-block
@@ -70,7 +71,7 @@
         transition: all 0.4s linear
       &.move-enter, &.move-leave
         opacity: 0
-        transform: translate3D(24px, 0, 0)
+        transform: translate3d(24px, 0, 0)
         .inner
           transform: rotate(180deg)
     .cart-count
