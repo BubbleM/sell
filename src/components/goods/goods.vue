@@ -126,7 +126,7 @@
           click: true  // 只有传入true时候点击左侧才会输出index
         });
         this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {
-//          click: true,
+          click: true,
           probeType: 3 // 滚动的时候，实时告诉我们滚动的位置
         });
         this.foodsScroll.on('scroll', (pos) => {
