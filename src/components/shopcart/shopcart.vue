@@ -33,7 +33,7 @@
           <h1 class="title">购物车</h1>
           <span class="empty">清空</span>
         </div>
-        <div class="list-content" rel="listContent">
+        <div class="list-content" ref="listContent">
           <ul>
             <li class="food" v-for="food in selectFoods">
               <span class="name">{{food.name}}</span>
@@ -52,6 +52,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import BScroll from 'better-scroll';
   import cartcontrol from 'components/cartcontrol/cartcontrol';
 
   export default {
@@ -137,7 +138,18 @@
           return false;
         }
         let show = !this.fold;
-        return show;
+        if (show) {
+          this.$nextTick(() => {
+            if (!this.scroll) {
+              this.scroll = new BScroll(this.$refs.listContent, {
+                click: true
+              });
+            } else {
+              this.scroll.refresh();
+            }
+          });
+          return show;
+        }
       }
     },
     methods: {
@@ -202,45 +214,6 @@
     components: {
       cartcontrol
     }
-//    transitions: {
-//      drop: {
-//        beforeEnter(el) {
-//          let count = this.balls.length;
-//          while (count--) {
-//            let ball = this.balls[count];
-//            if (ball.show) {
-//              let rect = ball.el.getBoundingClientRect();
-//              let x = rect.left - 32;
-//              let y = -(window.innerHeight - rect.top - 22);
-//              el.style.display = '';
-//              el.style.webkitTransform = `translate3d(0,${y}px,0)`;
-//              el.style.transform = `translate3d(0,${y}px,0)`;
-//              let inner = el.getElementsByClassName('inner-hook')[0];
-//              inner.style.webkitTransform = `translate3d(${x}px,0,0)`;
-//              inner.style.transform = `translate3d(${x}px,0,0)`;
-//            }
-//          }
-//        },
-//        enter(el) {
-//          /* eslint-disable no-unused-vars */
-//          let rf = el.offsetHeight;
-//          this.$nextTick(() => {
-//            el.style.webkitTransform = 'translate3d(0,0,0)';
-//            el.style.transform = 'translate3d(0,0,0)';
-//            let inner = el.getElementsByClassName('inner-hook')[0];
-//            inner.style.webkitTransform = 'translate3d(0,0,0)';
-//            inner.style.transform = 'translate3d(0,0,0)';
-//          });
-//        },
-//        afterEnter(el) {
-//          let ball = this.dropBalls.shift();
-//          if (ball) {
-//            ball.show = false;
-//            el.style.display = 'none';
-//          }
-//        }
-//      }
-//    }
   };
 </script>
 
@@ -391,4 +364,11 @@
             right: 90px
             bottom: 12px
             line-height: 24px
+            font-size: 14px
+            font-weight: 700%
+            color: rgb(240,20,20)
+          .cartcontrol-wrapper
+            position: absolute
+            right: 0
+            top: 6px
 </style>
