@@ -3,7 +3,7 @@
     <!--外层动画-->
     <transition name="move">
       <div class="cart-decrease" v-show="food.count>0"
-           @click="decreaseCart">
+           @click.stop.prevent="decreaseCart">
         <!--内层动画-->
         <span class="inner icon-remove_circle_outline"></span>
       </div>
