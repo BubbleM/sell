@@ -4,6 +4,9 @@
       <div class="food-content">
         <div class="image-header">
           <img :src="food.image"/>
+          <div class="back" @click="hide">
+            <i class="icon-arrow_lift"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -25,6 +28,9 @@
     methods: {
       show() {
         this.showFlag = true;
+      },
+      hide() {
+        this.showFlag = false;
       }
     }
   };
@@ -55,4 +61,13 @@
         left: 0
         width: 100%
         height: 100%
+      .back
+        position: absolute
+        top: 10px
+        left: 0
+        .icon-arrow_lift
+          display: block
+          padding: 10px
+          font-size: 20px
+          color: #fff
 </style>
