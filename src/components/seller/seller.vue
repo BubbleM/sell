@@ -193,7 +193,7 @@
           flex: 1
           text-align: center
           border-right: 1px solid rgba(7,17,27,0.1)
-          &.last-child
+          &:last-child
             border: none
           h2
             margin-bottom: 4px
